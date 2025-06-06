@@ -10,10 +10,6 @@ const colors = [
   "#CC3333",
 ];
 
-function debug(text) {
-  document.getElementById("debug").textContent = text;
-}
-
 function addDiceInstance(faces) {
   const diceId = diceCount - 1;
   let value = faces;
