@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dice Roller</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Styled Dice Roller</h1>
+    <h1 id="debug">DEBUGGING</h1>
+
+    <div id="controls">
+      <button id="addDiceBtn">➕ Add Dice</button>
+      <button id="rollBtn">🎲 Roll</button>
+      <button id="resetBtn">❌ Reset</button>
+    </div>
+
+    <div id="diceContainer">
+      <div class="dice" style="background-color: hsl(200, 60%, 80%)">
+        <label>Dice 1</label>
+        <div class="face-controls">
+          <button class="face-minus">-</button>
+          <span class="face-value">6</span>
+          <button class="face-plus">+</button>
+        </div>
+        <button class="removeBtn">x</button>
+      </div>
+    </div>
+
+    <div id="results"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
