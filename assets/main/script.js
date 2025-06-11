@@ -45,7 +45,7 @@ function addDiceInstance(faces) {
   diceContainer.appendChild(dice);
 
   plusBtn.addEventListener("click", () => {
-    if (value < 5) {
+    if (value < faceOptions.length - 1) {
       value += 1;
       faceText.textContent = faceOptions[value];
       faceText.style.color = colors[value];
@@ -83,6 +83,18 @@ function loadStorage() {
   if (localStorage.getItem("dices") != null) {
     if (JSON.parse(localStorage.getItem("dices")).length > 0) {
       diceList = JSON.parse(localStorage.getItem("dices"));
+
+      let result = [];
+
+      for (const dice of diceList) {
+        if (dice > faceOptions.length - 1) {
+          result.push(faceOptions.length - 1);
+        } else {
+          result.push(dice);
+        }
+      }
+
+      diceList = result;
     }
   }
 }
@@ -106,7 +118,7 @@ function updatels() {
 }
 
 function reset() {
-  localStorage.clear();
+  localStorage.setItem("dices", JSON.stringify([]));
 
   diceList = [];
 

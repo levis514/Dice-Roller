@@ -48,7 +48,7 @@ function renderSettings() {
     const colorPicker = document.createElement("input");
     colorPicker.type = "color";
     colorPicker.value = colors[i];
-    colorPicker.title = `Couleur du dé ${face}`;
+    colorPicker.title = `Dice color ${face}`;
     colorPicker.style.marginBottom = "4px";
     colorPicker.addEventListener("input", (e) => {
       updateColor(i, e.target.value);
@@ -61,7 +61,7 @@ function renderSettings() {
 
     const delBtn = document.createElement("button");
     delBtn.textContent = "×";
-    delBtn.title = `Supprimer le dé ${face}`;
+    delBtn.title = `Delete dice ${face}`;
     delBtn.style.cursor = "pointer";
     delBtn.style.fontSize = "1.4em";
     delBtn.style.padding = "0 6px";
@@ -73,7 +73,6 @@ function renderSettings() {
     colorContainer.appendChild(colorPicker);
     colorContainer.appendChild(delBtn);
 
-    // input texte éditable pour la valeur du dé
     const faceInput = document.createElement("input");
     faceInput.type = "text";
     faceInput.value = face;
@@ -82,13 +81,12 @@ function renderSettings() {
     faceInput.style.fontSize = "1.1em";
     faceInput.style.textAlign = "center";
 
-    faceInput.title = `Modifier la valeur du dé ${face}`;
+    faceInput.title = `Change dice face ammount ${face}`;
 
     faceInput.addEventListener("change", (e) => {
       const val = e.target.value.trim();
       const num = parseInt(val, 10);
 
-      // Validation : doit être un nombre entier pair > 0 et pas déjà présent ailleurs
       if (
         !isNaN(num) &&
         num > 0 &&
@@ -98,10 +96,9 @@ function renderSettings() {
         saveSettings();
         renderSettings();
       } else {
-        // remet la valeur correcte si invalide
         e.target.value = faceOptions[i];
         alert(
-          "Valeur invalide : doit être un nombre entier pair unique et > 0."
+          "Dice must be a positive integer."
         );
       }
     });
@@ -116,7 +113,7 @@ function renderSettings() {
   startDiv.innerHTML = "";
 
   const startLabel = document.createElement("label");
-  startLabel.textContent = "Valeur de départ : ";
+  startLabel.textContent = "Which Dice To Add : ";
 
   const startValueDisplay = document.createElement("span");
   startValueDisplay.textContent = faceOptions[startValue] || "";
