@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paramètres des Dés</title>
+    <link rel="stylesheet" href="settings.css" />
+  </head>
+  <body>
+    <h1>Réglages des Dés</h1>
+
+    <div
+      id="diceSettingsContainer"
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+        flex-wrap: wrap;
+      "
+    >
+      <div id="diceSettings"></div>
+      <button id="addFaceBtn" title="Ajouter un nouveau dé">+</button>
+    </div>
+
+    <div id="startValueContainer">
+      <label for="startValueRange">Valeur de départ :</label>
+      <input type="range" id="startValueRange" min="0" max="0" step="1" />
+      <span id="startValueDisplay"></span>
+    </div>
+
+    <button id="saveBtn">Sauvegarder les paramètres</button>
+    <button id="resetBtn">Réinitialiser aux défauts</button>
+
+    <script src="../settingsCommands.js"></script>
+    <script src="stgMain.js"></script>
+  </body>
+</html>

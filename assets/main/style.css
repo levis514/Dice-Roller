@@ -1,0 +1,267 @@
+/* GLOBAL */
+
+body {
+  font-family: sans-serif;
+  background: #f2f2f2;
+  padding: 2em;
+  text-align: center;
+  color: #202040;
+  user-select: none;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+/* CONTAINERS */
+
+#controls {
+  margin-bottom: 1.5em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+#diceContainer,
+#rollResults {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  min-height: 100px;
+  margin-bottom: 20px;
+  margin-top: 1em;
+}
+
+#controls button,
+#rollAgainBtn,
+#changeSettingsBtn {
+  padding: 0.75em 1.8em;
+  margin-top: 1em;
+  font-size: 1.1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.25s ease, background 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  user-select: none;
+}
+
+#controls button:hover,
+#changeSettingsBtn:hover {
+  background: linear-gradient(135deg, #0056b3, #003f8a);
+  transform: translateY(-2px);
+}
+
+#rollAgainBtn {
+  background: linear-gradient(135deg, #28a745, #1e7e34);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+#rollAgainBtn:hover {
+  background: linear-gradient(135deg, #218838, #1c7430);
+  transform: translateY(-2px);
+}
+
+#rollAgainBtn:active,
+#changeSettingsBtn:active,
+#controls button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dice {
+  background: linear-gradient(145deg, #e0e7ff, #aabbff);
+  padding: 1.2em 1.5em;
+  border-radius: 15px;
+  min-width: 120px;
+  box-shadow: 6px 6px 12px #bec8ff, -6px -6px 12px #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.3s, box-shadow 0.3s;
+  user-select: none;
+}
+
+.dice:hover {
+  background: linear-gradient(145deg, #c3d0ff, #889eff);
+  box-shadow: 8px 8px 15px #a2b0ff, -8px -8px 15px #e0e7ff;
+}
+
+.dice label {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.6em;
+  color: #202040;
+}
+
+.face-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-top: 0.5em;
+}
+
+.face-controls button {
+  font-size: 1.3em;
+  padding: 0.3em 0.7em;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #4a6cff, #0033cc);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0, 51, 204, 0.5);
+  transition: background 0.3s, transform 0.15s ease;
+}
+
+.face-controls button:hover {
+  background: linear-gradient(135deg, #003bb3, #002080);
+  transform: translateY(-2px);
+}
+
+.face-controls button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(0, 51, 204, 0.6);
+}
+
+.face-value {
+  min-width: 2.5em;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: #202040;
+  user-select: none;
+}
+
+/* REMOVE BUTTON */
+
+.removeBtn {
+  margin-top: 0.8em;
+  background: linear-gradient(135deg, #ff4c4c, #b30000);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.2em;
+  padding: 0.4em 1em;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(179, 0, 0, 0.5);
+  transition: background 0.3s, transform 0.15s ease;
+}
+
+.removeBtn:hover {
+  background: linear-gradient(135deg, #b30000, #7a0000);
+  transform: translateY(-2px);
+}
+
+.removeBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(123, 0, 0, 0.6);
+}
+
+/* DEBUG AREA */
+
+#debug {
+  color: #333366;
+  font-weight: 600;
+  font-family: monospace;
+  margin-bottom: 1em;
+}
+
+/* RESULTS TEXT */
+
+#results {
+  margin-top: 2em;
+  font-size: 1.3em;
+  color: #202040;
+}
+
+/* INPUT TEXTBOXES */
+
+input[type="text"],
+input[type="number"],
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5em 0.75em;
+  border-radius: 8px;
+  border: 2px solid #aabbff;
+  box-shadow: inset 2px 2px 5px #d3dbff;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  margin: 0.3em 0 1em 0;
+  color: #202040;
+  background-color: white;
+  user-select: text;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #0033cc;
+  box-shadow: 0 0 8px #0033cc;
+}
+
+/* ROLL RESULTS & ROLLING NUMBERS */
+
+#rollResults {
+  margin-top: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
+
+.result-dice {
+  height: 80px;
+  width: 80px;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  border: 2px solid #333;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: white;
+  font-size: 2rem;
+  font-weight: bold;
+  position: relative;
+  user-select: none;
+}
+
+.rolling-numbers {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  width: 80px;
+}
+
+.rolling-numbers div {
+  height: 80px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* KEYFRAME ANIMATION */
+
+@keyframes fadeInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
