@@ -135,12 +135,12 @@ resetBtn.addEventListener("click", () => reset());
 rollBtn.addEventListener("click", () => {
   updatels();
 
-  window.location.href = "assets/roll/roll.html";
+  window.location.href = "../roll/roll.html";
 });
 advBtn.addEventListener("click", () => {
   updatels();
 
-  window.location.href = "assets/settings/settings.html";
+  window.location.href = "../settings/settings.html";
 });
 
 loadSettings();
