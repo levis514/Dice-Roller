@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Paramètres des Dés</title>
+    <title>Dice Settings</title>
     <link rel="stylesheet" href="settings.css" />
   </head>
   <body>
@@ -24,15 +24,26 @@
     </div>
 
     <div id="startValueContainer">
-      <label for="startValueRange">Which Dice To Add :</label>
+      <label for="startValueRange" id="startValueText">Which Dice To Add :</label>
       <input type="range" id="startValueRange" min="0" max="0" step="1" />
       <span id="startValueDisplay"></span>
     </div>
 
-    <button id="saveBtn">Save and go back</button>
-    <button id="resetBtn">Reset to default</button>
+    <div id="rollSpeedContainer">
+      <label>Roll Speed: </label>
+      <select id="rollSpeed">
+        <option>Normal</option>
+        <option>Quick</option>
+        <option>Instant</option>
+      </select>
+    </div>
+    
+    <div id="saveButtons">
+      <button id="saveBtn">Save and go back</button>
+      <button id="resetBtn">Reset to default</button>
+    </div>
 
     <script src="../settingsCommands.js"></script>
-    <script src="stgMain.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

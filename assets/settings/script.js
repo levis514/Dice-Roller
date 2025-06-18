@@ -30,11 +30,39 @@ function updateStartValue(newIndex) {
   if (newIndex >= 0 && newIndex < faceOptions.length) {
     startValue = newIndex;
     saveSettings();
-    renderSettings();
+    renderStartValue();
   }
 }
 
 function renderSettings() {
+  renderFaces();
+
+  renderStartValue();
+
+  renderRollSpeed();
+}
+
+function renderRollSpeed() {
+  const option = document.getElementById("rollSpeed");
+  option.selectedIndex = rollSpeed;
+}
+
+function renderStartValue() {
+
+  const startLabel = document.getElementById("startValueText");
+  startLabel.textContent = "Which Dice To Add : ";
+
+  const startValueDisplay = document.getElementById("startValueDisplay");
+  startValueDisplay.textContent = faceOptions[startValue] || "";
+
+  const slider = document.getElementById("startValueRange");
+  slider.max = faceOptions.length - 1;
+  slider.value = startValue;
+}
+
+function renderFaces() {
+  renderStartValue();
+
   const diceSettings = document.getElementById("diceSettings");
   diceSettings.innerHTML = "";
 
@@ -94,7 +122,7 @@ function renderSettings() {
       ) {
         faceOptions[i] = num;
         saveSettings();
-        renderSettings();
+        removeFaces();
       } else {
         e.target.value = faceOptions[i];
         alert(
@@ -108,29 +136,6 @@ function renderSettings() {
 
     diceSettings.appendChild(faceDiv);
   });
-
-  const startDiv = document.getElementById("startValueContainer");
-  startDiv.innerHTML = "";
-
-  const startLabel = document.createElement("label");
-  startLabel.textContent = "Which Dice To Add : ";
-
-  const startValueDisplay = document.createElement("span");
-  startValueDisplay.textContent = faceOptions[startValue] || "";
-
-  const slider = document.createElement("input");
-  slider.type = "range";
-  slider.min = 0;
-  slider.max = faceOptions.length - 1;
-  slider.value = startValue;
-  slider.addEventListener("input", (e) => {
-    updateStartValue(parseInt(e.target.value));
-    startValueDisplay.textContent = faceOptions[startValue] || "";
-  });
-
-  startDiv.appendChild(startLabel);
-  startDiv.appendChild(slider);
-  startDiv.appendChild(startValueDisplay);
 }
 
 function addFace() {
@@ -138,13 +143,14 @@ function addFace() {
   faceOptions.push(newFace);
   colors.push("#888888");
   saveSettings();
-  renderSettings();
+  renderFaces();
 }
 
 function resetSettings() {
   faceOptions = [4, 6, 8, 10, 12, 20];
   startValue = 1;
   colors = ["#3366CC", "#33CCCC", "#33CC33", "#E8D96F", "#FF9933", "#CC3333"];
+  rollSpeed = 0;
   saveSettings();
   renderSettings();
 }
@@ -154,6 +160,14 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSettings();
 
   document.getElementById("addFaceBtn").addEventListener("click", addFace);
+  document.getElementById("startValueRange").addEventListener("input", (e) => {
+    updateStartValue(parseInt(e.target.value));
+    document.getElementById("startValueDisplay").textContent = faceOptions[startValue] || "";
+  });
+  document.getElementById("rollSpeed").addEventListener("change", () => {
+    rollSpeed = document.getElementById("rollSpeed").selectedIndex;
+    saveSettings();
+  });
   document.getElementById("resetBtn").addEventListener("click", resetSettings);
   document.getElementById("saveBtn").addEventListener("click", () => {
     window.location.href = "../main/dices.html";

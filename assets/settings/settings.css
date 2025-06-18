@@ -127,3 +127,29 @@ h1 {
   transform: translateY(0);
   box-shadow: 0 3px 7px rgba(11, 22, 51, 0.8);
 }
+
+select {
+  background: linear-gradient(135deg, #3366cc, #224499);
+  border: none;
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
+  font-size: 1.1em;
+  padding: 0.7em 1.6em;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(51, 102, 204, 0.6);
+  transition: background 0.3s, transform 0.15s ease;
+  appearance: none;
+  user-select: none;
+  margin: 0 0.5em 1em 0.5em;
+}
+
+select:hover {
+  background: linear-gradient(135deg, #224499, #112266);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(17, 34, 102, 0.8);
+}
+
+select:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 7px rgba(11, 22, 51, 0.8);
+}

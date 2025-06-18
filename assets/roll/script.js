@@ -7,10 +7,18 @@ function sleep(ms) {
 
 async function animation(dice, max) {
   const totalRandomNumbers = 20;
-  const animationDuration = 3000;
+  let animationDuration = 3000;
   const easingFunction = (t) => t * (2 - t);
   const finalBgColor = "transparent";
-  const initialDelay = 50;
+  let initialDelay = 50;
+
+  if (rollSpeed == "1") {
+    animationDuration = animationDuration / 2.5;
+    initialDelay = initialDelay / 2.5;
+  } else if (rollSpeed == "2") {
+    animationDuration = 0;
+    initialDelay = 0;
+  }
 
   const inner = document.createElement("div");
   inner.className = "rolling-numbers";
@@ -69,12 +77,17 @@ async function spawnDice() {
 
   const animations = [];
   let idx = 0;
+  let cooldown = 500;
+
+  if (rollSpeed == "1") {
+    cooldown = cooldown / 2.5;
+  }
 
   for (const diceValue of diceList) {
     idx++;
 
-    if (idx !== 1) {
-      await sleep(500);
+    if (idx !== 1 && rollSpeed != "2") {
+      await sleep(cooldown);
     }
 
     const dice = document.createElement("div");
@@ -105,7 +118,7 @@ function loadStorage() {
     if (JSON.parse(localStorage.getItem("dices")).length > 0) {
       diceList = JSON.parse(localStorage.getItem("dices"));
     } else {
-      window.location.href = "index.html";
+      window.location.href = "../main/dices.html";
     }
   }
 }

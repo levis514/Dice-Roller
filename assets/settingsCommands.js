@@ -8,6 +8,7 @@ var colors = [
   "#FF9933",
   "#CC3333",
 ];
+var rollSpeed = 0;
 
 function loadSettings() {
   const stored = localStorage.getItem("settings");
@@ -16,6 +17,7 @@ function loadSettings() {
     faceOptions = settings.faceOptions || faceOptions;
     startValue = settings.startValue !== undefined ? settings.startValue : startValue;
     colors = settings.colors || colors;
+    rollSpeed = settings.rollSpeed || rollSpeed;
   } else {
     saveSettings();
   }
@@ -25,7 +27,8 @@ function saveSettings() {
     var settings = {
         faceOptions: faceOptions,
         startValue: startValue,
-        colors: colors
+        colors: colors,
+        rollSpeed: rollSpeed
     };
     localStorage.setItem("settings", JSON.stringify(settings));
 }

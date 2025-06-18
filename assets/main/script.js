@@ -1,5 +1,5 @@
 let diceCount = 1;
-let diceList = [1];
+let diceList = [];
 
 function addDiceInstance(faces) {
   const diceId = diceCount - 1;
@@ -95,6 +95,8 @@ function loadStorage() {
       }
 
       diceList = result;
+    } else {
+      diceList = [startValue];
     }
   }
 }
