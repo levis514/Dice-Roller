@@ -73,7 +73,6 @@ async function spawnDice() {
   for (const diceValue of diceList) {
     idx++;
 
-    // Skip the cooldown before the first dice only
     if (idx !== 1) {
       await sleep(500);
     }
@@ -121,7 +120,6 @@ function createRerollButton() {
   buttons.appendChild(rerollBtn);
 
   rerollBtn.addEventListener("click", () => {
-    // Removed quickRoll from storage since feature is removed
     window.location.href = "roll.html";
   });
 }

@@ -156,6 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("addFaceBtn").addEventListener("click", addFace);
   document.getElementById("resetBtn").addEventListener("click", resetSettings);
   document.getElementById("saveBtn").addEventListener("click", () => {
-    window.location.href = "../../index.html";
+    window.location.href = "../main/dices.html";
   });
 });
