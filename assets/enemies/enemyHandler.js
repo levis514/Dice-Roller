@@ -305,7 +305,7 @@ function attackEnemy(enemyNumber, damage, type) {
 
   if (type === "heal") {
     enemy.currentHealth += damage;
-    if (enemy.currentHealth > enemy.maxHealth && healHigherThanMax ==! undefined && !healHigherThanMax)
+    if (enemy.currentHealth > enemy.maxHealth && !healHigherThanMax)
       enemy.currentHealth = enemy.maxHealth;
   } else {
     enemy.currentHealth -= damage;
