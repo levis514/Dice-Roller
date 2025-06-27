@@ -133,29 +133,39 @@ function createRerollButton() {
   buttons.appendChild(rerollBtn);
 
   rerollBtn.addEventListener("click", () => {
-    window.location.href = "roll.html";
+    if (monster) {
+      window.location.href = "enemies.html";
+    } else {
+      window.location.href = "roll.html";
+    }
   });
 }
 
 function createTotalLabel(total) {
-  const container = document.getElementById("totalLabelContainer");
-  container.innerHTML = "";
+  const totalNum = document.getElementById("totalNum");
+  totalNum.textContent = total;
 
-  const label = document.createElement("div");
-  label.id = "totalLabel";
-  label.textContent = `Total: ${total}`;
-  label.style.fontWeight = "bold";
-  label.style.fontSize = "1.2em";
-  label.style.marginTop = "10px";
-
-  container.appendChild(label);
+  if (monster) {
+    document.getElementById("attack").style.display = "block";
+  }
 }
 
-const changeSettingBtn = document.getElementById("changeSettingsBtn");
-changeSettingBtn.addEventListener("click", () => {
-  window.location.href = "../../index.html";
-});
+function createSettingsButton() {
+  const buttons = document.getElementById("buttons");
 
+  const changeSettingBtn = document.createElement("button");
+  changeSettingBtn.textContent = "Change Settings";
+  changeSettingBtn.id = "changeSettingsBtn";
+
+  buttons.appendChild(changeSettingBtn);
+
+  changeSettingBtn.addEventListener("click", () => {
+    window.location.href = "../../index.html";
+  });
+}
+
+
+createSettingsButton();
 loadSettings();
 loadStorage();
 spawnDice();

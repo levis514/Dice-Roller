@@ -174,8 +174,8 @@ h1 {
 
 /* RESULTS TEXT */
 
-#results {
-  margin-top: 2em;
+#totalLabelContainer {
+  margin-top: 1em;
   font-size: 1.3em;
   color: #202040;
 }

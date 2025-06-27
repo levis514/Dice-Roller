@@ -1,34 +1,48 @@
-var faceOptions = [4, 6, 8, 10, 12, 20];
-var startValue = 1;
-var colors = [
-  "#3366CC",
-  "#33CCCC",
-  "#33CC33",
-  "#E8D96F",
-  "#FF9933",
-  "#CC3333",
-];
-var rollSpeed = 0;
+const defaultSettings = {
+  faceOptions: [4, 6, 8, 10, 12, 20],
+  startValue: 1,
+  colors: ["#3366CC", "#33CCCC", "#33CC33", "#E8D96F", "#FF9933", "#CC3333"],
+  rollSpeed: 0,
+  monster: false,
+  deleteEnemyOnDeath: true,
+  healHigherThanMax: false,
+  splashDivide: false,
+};
+
+let settings = loadSettings();
+
+Object.keys(defaultSettings).forEach((key) => {
+  window[key] = settings[key];
+});
+
+function createJSON() {
+  const obj = {};
+  Object.keys(defaultSettings).forEach((key) => {
+    obj[key] = typeof window[key] !== "undefined" ? window[key] : defaultSettings[key];
+  });
+  return obj;
+}
 
 function loadSettings() {
-  const stored = localStorage.getItem("settings");
-  if (stored) {
-    const settings = JSON.parse(stored);
-    faceOptions = settings.faceOptions || faceOptions;
-    startValue = settings.startValue !== undefined ? settings.startValue : startValue;
-    colors = settings.colors || colors;
-    rollSpeed = settings.rollSpeed || rollSpeed;
-  } else {
-    saveSettings();
-  }
+  const loaded = JSON.parse(localStorage.getItem("settings")) || defaultSettings;
+
+  Object.keys(defaultSettings).forEach((key) => {
+    window[key] = loaded[key];
+  });
+
+  saveSettings();
+  return loaded;
 }
 
 function saveSettings() {
-    var settings = {
-        faceOptions: faceOptions,
-        startValue: startValue,
-        colors: colors,
-        rollSpeed: rollSpeed
-    };
-    localStorage.setItem("settings", JSON.stringify(settings));
+  const data = createJSON();
+  localStorage.setItem("settings", JSON.stringify(data));
+}
+
+function resetSettings() {
+  localStorage.setItem("settings", JSON.stringify(defaultSettings));
+  settings = { ...defaultSettings };
+  Object.keys(defaultSettings).forEach((key) => {
+    window[key] = defaultSettings[key];
+  });
 }

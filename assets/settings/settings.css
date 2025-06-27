@@ -143,6 +143,60 @@ select {
   margin: 0 0.5em 1em 0.5em;
 }
 
+#checkOptionsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.checkboxLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 1.1em;
+  user-select: none;
+  cursor: pointer;
+  margin: 0 0.5em 1em 0.5em;
+  color: black;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #3366cc, #224499);
+  box-shadow: 0 4px 10px rgba(51, 102, 204, 0.6);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.15s ease;
+  position: relative;
+}
+
+.checkboxLabel input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 1.7em;
+  font-weight: bold;
+  text-align: right;
+  position: absolute;
+  left: 0.2em;
+  top: 0.02em;
+}
+
+.checkboxLabel input[type="checkbox"]:hover {
+  background: linear-gradient(135deg, #224499, #112266);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(17, 34, 102, 0.8);
+}
+
+.checkboxLabel input[type="checkbox"]:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 7px rgba(11, 22, 51, 0.8);
+}
+
 select:hover {
   background: linear-gradient(135deg, #224499, #112266);
   transform: translateY(-2px);

@@ -137,7 +137,11 @@ resetBtn.addEventListener("click", () => reset());
 rollBtn.addEventListener("click", () => {
   updatels();
 
-  window.location.href = "../roll/roll.html";
+  if (monster) {
+    window.location.href = "../enemies/enemies.html";
+  } else {
+    window.location.href = "../roll/roll.html";
+  }
 });
 advBtn.addEventListener("click", () => {
   updatels();

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="settings.css" />
   </head>
   <body>
-    <h1>Dice Options</h1>
+    <h2>Dice Options</h2>
 
     <div
       id="diceSettingsContainer"
@@ -36,6 +36,26 @@
         <option>Quick</option>
         <option>Instant</option>
       </select>
+    </div>
+
+    <h2>Enemy Options</h2>
+    <div id="checkOptionsContainer">
+      <label class="checkboxLabel">
+        Enabled: 
+        <input type="checkbox" id="monsters">
+      </label>
+      <label class="checkboxLabel">
+        Delete Enemy when dead: 
+        <input type="checkbox" id="deleteEnemy">
+      </label>
+      <label class="checkboxLabel">
+        Authorize Enemy to heal higher than max health: 
+        <input type="checkbox" id="healHigherThanMax">
+      </label>
+      <label class="checkboxLabel">
+        Separate Splash damage between enemies: 
+        <input type="checkbox" id="splashDivide">
+      </label>
     </div>
     
     <div id="saveButtons">

@@ -40,6 +40,8 @@ function renderSettings() {
   renderStartValue();
 
   renderRollSpeed();
+
+  renderCheckOptions();
 }
 
 function renderRollSpeed() {
@@ -122,7 +124,7 @@ function renderFaces() {
       ) {
         faceOptions[i] = num;
         saveSettings();
-        removeFaces();
+        removeFace();
       } else {
         e.target.value = faceOptions[i];
         alert(
@@ -138,21 +140,30 @@ function renderFaces() {
   });
 }
 
+function renderCheckOptions() {
+  //Monsters checkbox
+  const monsterCheckbox = document.getElementById("monsters");
+  monsterCheckbox.checked = monster;
+
+  // Delete Enemy checkbox
+  const deleteEnemyCheckbox = document.getElementById("deleteEnemy");
+  deleteEnemyCheckbox.checked = deleteEnemyOnDeath;
+
+  // Heal Higher Than Max checkbox
+  const healHigherThanMaxCheckbox = document.getElementById("healHigherThanMax");
+  healHigherThanMaxCheckbox.checked = healHigherThanMax;
+
+  // Splash Divide checkbox
+  const splashDivideCheckbox = document.getElementById("splashDivide");
+  splashDivideCheckbox.checked = splashDivide;
+}
+
 function addFace() {
   const newFace = getNextFace();
   faceOptions.push(newFace);
   colors.push("#888888");
   saveSettings();
   renderFaces();
-}
-
-function resetSettings() {
-  faceOptions = [4, 6, 8, 10, 12, 20];
-  startValue = 1;
-  colors = ["#3366CC", "#33CCCC", "#33CC33", "#E8D96F", "#FF9933", "#CC3333"];
-  rollSpeed = 0;
-  saveSettings();
-  renderSettings();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -168,7 +179,27 @@ document.addEventListener("DOMContentLoaded", () => {
     rollSpeed = document.getElementById("rollSpeed").selectedIndex;
     saveSettings();
   });
-  document.getElementById("resetBtn").addEventListener("click", resetSettings);
+  document.getElementById("monsters").addEventListener("change", (e) => {
+    monster = e.target.checked;
+    saveSettings();
+  });
+  document.getElementById("deleteEnemy").addEventListener("change", (e) => {
+    deleteEnemyOnDeath = e.target.checked;
+    saveSettings();
+  });
+  document.getElementById("healHigherThanMax").addEventListener("change", (e) => {
+    healHigherThanMax = e.target.checked;
+    saveSettings();
+  });
+  document.getElementById("splashDivide").addEventListener("change", (e) => {
+    splashDivide = e.target.checked;
+    saveSettings();
+  });
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    resetSettings();
+    loadSettings();
+    renderSettings(); 
+  });
   document.getElementById("saveBtn").addEventListener("click", () => {
     window.location.href = "../main/dices.html";
   });

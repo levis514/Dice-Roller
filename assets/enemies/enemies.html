@@ -1,15 +1,35 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dice Settings</title>
-    <link rel="stylesheet" href="settings.css" />
+    <title>Dice Roll Result</title>
+    <link rel="icon" href="../images/icon.png" type="image/png" />
+    <link rel="stylesheet" href="../roll/style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    
-    
+    <div id="diceContainer"></div>
+
+    <div id="buttons" class="buttons"></div>
+
+    <div id="totalLabelContainer">
+      Total: 
+      <span id="totalNum"></span>
+    </div>
+
+    <div id="enemyContainer" class="enemyContainer">
+      <div class="add-enemy-form">
+      <input type="text" id="newEnemyName" placeholder="Enemy Name" />
+      <input type="number" id="newEnemyHP" placeholder="Health" min="0" />
+      <button id="addEnemyBtn">Add Enemy</button>
+      <button id="clear">Clear Enemies</button>
+      <br/>
+      <button id="attack" style="display: none;">Attack Enemies</button>
+    </div>
+    </div>
+
     <script src="../settingsCommands.js"></script>
-    <script src="script.js"></script>
+    <script src="../roll/script.js"></script>
+    <script src="enemyHandler.js"></script>
   </body>
 </html>
